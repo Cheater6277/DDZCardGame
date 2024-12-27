@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("DDZGameClient")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Duanyll")]
+[assembly: AssemblyCompany("From Duanyll Edited by Lisushang")]
 [assembly: AssemblyProduct("DDZGameClient")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

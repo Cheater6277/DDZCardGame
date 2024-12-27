@@ -51,7 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Icon1.ico</ApplicationIcon>
+    <ApplicationIcon>assets\icon\Icon1.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>5DA3A050D489EAF109244B379EC0722B9837B517</ManifestCertificateThumbprint>
@@ -92,14 +92,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SmallCardView.xaml.cs">
+    <Compile Include="Common\SmallCardView.xaml.cs">
       <DependentUpon>SmallCardView.xaml</DependentUpon>
     </Compile>
-    <Page Include="CardView.xaml">
+    <Page Include="Common\CardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="App\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -107,26 +107,27 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CardView.xaml.cs">
+    <Compile Include="Common\CardView.xaml.cs">
       <DependentUpon>CardView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="App\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MidCardView.xaml">
+    <Page Include="Common\MidCardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SmallCardView.xaml">
+    <Page Include="Common\SmallCardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MidCardView.xaml.cs">
+    <Compile Include="Common\MidCardView.xaml.cs">
       <DependentUpon>MidCardView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Conn\Netconn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -158,13 +159,9 @@
       <Project>{36adaf64-320d-40d2-bd14-e0f82725bfde}</Project>
       <Name>GameServer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NetClient\NetClient.csproj">
-      <Project>{4e1d4f94-72a9-4d93-9de0-d2303262e3fa}</Project>
-      <Name>NetClient</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icon1.ico">
+    <Resource Include="assets\icon\Icon1.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace NetClient {
+namespace GameClient {
     public class NetworkClient {
         private TcpClient tcpClient = null;  // 替换为 TcpClient
         private NetworkStream networkStream = null;  // 用于数据读取

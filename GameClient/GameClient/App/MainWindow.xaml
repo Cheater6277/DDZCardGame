@@ -88,7 +88,7 @@
                                 </RowDefinition>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource MaterialDesignTitleTextBlock}" Margin="8,8,8,16">
-      连接服务器
+                                <Run Text="加入游戏" />
                             </TextBlock>
                             <TextBox x:Name="TBUserName" Grid.Column="0" Grid.Row="1" materialDesign:HintAssist.Hint="用户名" Text="" />
                             <TextBox x:Name="TBServerIP" Grid.Column="0" Grid.Row="2" materialDesign:HintAssist.Hint="服务器IP地址" Text="" />

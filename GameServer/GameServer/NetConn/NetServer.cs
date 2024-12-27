@@ -7,7 +7,7 @@ using System.Net;
 using System.Threading;
 using System.Net.Sockets;
 
-namespace NetServer {
+namespace GameServer {
     // 广播消息的类
     public static class BroadCast {
         // 推送消息给所有连接的客户端

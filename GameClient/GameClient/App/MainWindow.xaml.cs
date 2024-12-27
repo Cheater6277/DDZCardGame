@@ -21,7 +21,7 @@ namespace GameClient
     /// </summary>
     public partial class MainWindow : Window
     {
-        NetClient.NetworkClient client = new NetClient.NetworkClient();
+        NetworkClient client = new NetworkClient();
         int MyID = -1;
         string UserName;
         DispatcherTimer timer = new DispatcherTimer();

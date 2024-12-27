@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Diagnostics;
-using NetServer;
 
 namespace GameServer
 {
@@ -332,7 +331,7 @@ namespace GameServer
         Selection[] cards;
         Selection baseCard;
         Random rand = new Random();
-        NetServer.NetServer server = new NetServer.NetServer();
+        NetServer server = new NetServer();
 
         public GameruleHandler()
         {
