@@ -196,14 +196,14 @@ namespace GameServer.NetConn
             }
         }
 
-        private void RecMsg(string clno, string msg)
+        private void RecMsg(string clid, string msg)
         {
-            MessageRecieved(clno, msg);
+            MessageRecieved(clid, msg);
         }
 
-        private void ULogout(string clno)
+        private void ULogout(string clid)
         {
-            UserLoggedOut(clno);
+            UserLoggedOut(clid);
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -307,9 +307,9 @@ namespace GameServer.NetConn
             BroadCast.PushMessage(msg + "*", "", false, clientList);
         }
 
-        public void SendTo(string clno, string msg)
+        public void SendTo(string clid, string msg)
         {
-            clientList[clno].Send(Encoding.UTF8.GetBytes(msg + "*"));
+            clientList[clid].Send(Encoding.UTF8.GetBytes(msg + "*"));
         }
     }
 
@@ -319,7 +319,7 @@ namespace GameServer.NetConn
     {
         Socket mySocket = null;
         String clid = null;
-        Dictionary<string, Socket> clientList = null;
+        Dictionary<string, Socket> clientList2 = new Dictionary<string, Socket>();
         public delegate void RecievedMessage(string UserName, string msg);
         public delegate void UserLogout(string UserName);
         public event RecievedMessage MessageRecieved;
@@ -329,7 +329,7 @@ namespace GameServer.NetConn
         {
             this.mySocket = socket;
             this.clid = clientid;
-            this.clientList = clientlist;
+            this.clientList2 = clientlist;
 
             Thread thRecv = new Thread(RecieveMsg);
             thRecv.IsBackground = true;
@@ -340,38 +340,44 @@ namespace GameServer.NetConn
         {
             Byte[] bytesFrom = new Byte[4096];
             String dataFromClient = null;
+            String msgTemp = null;
+            Byte[] bytesSend = new Byte[4096];
+            Boolean isListen = true;
 
-            while (true)
+            while (isListen)
             {
-                try
-                {
                     Int32 len = mySocket.Receive(bytesFrom);
 
                     if (len > -1)
                     {
                         String tmp = Encoding.UTF8.GetString(bytesFrom, 0, len);  //将字节流转换成字符串
                         dataFromClient = tmp;
-
-                        Int32 sublen = dataFromClient.LastIndexOf("*");
-                        if (sublen > -1)
+                        if (!String.IsNullOrWhiteSpace(dataFromClient)) 
                         {
-                            dataFromClient = dataFromClient.Substring(0, sublen);
-                        }
+                            dataFromClient = dataFromClient.Substring(0, dataFromClient.LastIndexOf("$"));
+                            if (!String.IsNullOrWhiteSpace(dataFromClient))
+                            {
+                                //丧心病狂，只能把事件二级传出去
+                                MessageRecieved(clid, dataFromClient);
+                                //BroadCast.PushMessage(dataFromClient, clid, true, clientList);
+                                Console.WriteLine(clid + ":" + dataFromClient);
+                            }
+                            else
+                            {
+                                isListen = false;
+                                clientList2.Remove(clid);
+                                UserLoggedOut(clid);
+                                Console.WriteLine(clid + "已断开与服务器连接");
+                                BroadCast.PushMessage(clid + "已下线", "", false, clientList2);
+                                mySocket.Close();
+                                mySocket = null;
+                            }
 
-                        if (!String.IsNullOrWhiteSpace(dataFromClient))
-                        {
-                            MessageRecieved(clid, dataFromClient);
                         }
+                            
                     }
-                }
-                catch (Exception ep)
-                {
-                    Log("接收消息失败：" + ep.ToString());
-                    clientList.Remove(clid);
-                    UserLoggedOut(clid);
-                    mySocket.Close();
-                    break;
-                }
+                
+                
             }
         }
 
