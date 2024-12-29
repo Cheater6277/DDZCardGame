@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameruleHandler.cs" />
+    <Compile Include="NetConn\BroadCast.cs" />
     <Compile Include="NetConn\NetServer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

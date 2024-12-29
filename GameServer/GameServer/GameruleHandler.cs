@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Diagnostics;
+using GameServer.NetConn;
 
 namespace GameServer
 {
@@ -638,44 +639,6 @@ namespace GameServer
             IsRunning = false;
             Program.Log("已强制终止主线程");
         }
-
-#if DEBUG
-        public void DoTest()
-        {
-            //Program.Log("当前测试项目：Card结构");
-            //Card a = new Card('B', 'c');
-            //Program.Log(string.Format("花色：{0}，大小：{1}", a.color, a.value));
-            //Card b = new Card('C', 'e');
-            //Program.Log(Convert.ToString(a < b));
-            //Card c = new Card('F', 'z');
-            //Program.Log(string.Format("花色：{0}，大小：{1}", c.color, c.value));
-
-            //Program.Log("测试洗牌程序");
-            //CreateCards();
-            //Program.Log(cards[0].ToString());
-            //Program.Log(cards[1].ToString());
-            //Program.Log(cards[2].ToString());
-            //Program.Log(baseCard.ToString());
-
-            //Program.Log("测试牌型判断");
-            //Selection a = new Selection(Console.ReadLine());
-            //Program.Log(a.type.ToString());
-
-            //Program.Log("测试大小比较");
-            //while (true)
-            //{
-            //    Selection a = new Selection(Console.ReadLine());
-            //    Selection b = new Selection(Console.ReadLine());
-            //    Program.Log(b.CanMatch(a).ToString());
-            //}
-
-            //Program.Log("测试游戏逻辑");
-            //StartGame();
-
-            StartGame();
-        }
-#endif
-
         List<string> UserNames = new List<string>();
         List<string> AllUsers = new List<string>();
         Dictionary<string, int> Score = new Dictionary<string, int>();

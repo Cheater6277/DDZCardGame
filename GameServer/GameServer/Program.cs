@@ -10,18 +10,16 @@ namespace GameServer
     {
         public static void Log(string a)
         {
-            //Console.WriteLine(DateTime.Now + " " + a);
+            Console.WriteLine(DateTime.Now + " " + a);
         }
 
         static GameruleHandler handler;
 
         static void Main(string[] args)
         {
-#if !DEBUG
             try
             {
-#endif
-                Console.WriteLine("DDZ Game Server Copyright (C) 2018  Duanyll");
+                Console.WriteLine("DDZ Game Server Copyright (C) 2024 From Duanyll Edited by Lisushang and Wangshanghai");
                 Console.WriteLine("This program comes with ABSOLUTELY NO WARRANTY; ");
                 Console.WriteLine("This is free software, and you are welcome to redistribute it");
                 Console.WriteLine("under certain conditions;");
@@ -29,22 +27,13 @@ namespace GameServer
                 Log("当前服务器版本：" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
                 Log("服务器程序已启动");
                 handler = new GameruleHandler();
-
-#if DEBUG
-                Log("受编译选项控制，当前处于测试模式");
-                handler.DoTest();
-#else
                 handler.StartGame();
-#endif
-
-            //Log("即将终止服务器程序,请按任意键退出");
-            Log("按任意键退出服务器");
+                Log("按任意键退出服务器");
                 Console.ReadKey();
-            handler.StopAll();
+                handler.StopAll();
                 return;
-#if !DEBUG
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Log("程序遭遇了不可恢复的异常，现将退出");
                 Log("异常消息如下：");
@@ -52,7 +41,6 @@ namespace GameServer
                 Console.ReadKey();
                 return;
             }
-#endif
         }
     }
 }

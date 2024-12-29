@@ -4,13 +4,7 @@
 
 局域网联机斗地主，使用.net framework4.6.1&amp;WPF
 
-[点击下载最新版](https://github.com/Duanyll/DDZGame/releases)
 
-以上链接版本有重大bug，不过我懒得在上传安装文件了，请自行下载源码编译
-
-## 创意来源
-
-llf0703的咕掉的项目
 
 ## 工程进度
 

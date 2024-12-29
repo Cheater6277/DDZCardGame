@@ -21,10 +21,11 @@ namespace GameClient
     /// </summary>
     public partial class MainWindow : Window
     {
-        NetworkClient client = new NetworkClient();
         int MyID = -1;
         string UserName;
+        NetworkClient client = new NetworkClient();
         DispatcherTimer timer = new DispatcherTimer();
+
         public MainWindow()
         {
             InitializeComponent();
