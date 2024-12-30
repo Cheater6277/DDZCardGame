@@ -1,4 +1,4 @@
-# DDZGame
+# 斗地主卡牌游戏
 
 ![image.png](https://i.loli.net/2019/08/25/H3WS9XzbFrem5no.png)
 
@@ -6,16 +6,11 @@
 
 
 
-## 工程进度
+## 稍作修改
 
-正式版发布！
+原作者使用 Socket连接方式 + 多线程处理客户端连接
 
-- [x] 主逻辑
-- [x] Card结构
-- [x] selection结构
-- [x] 主逻辑的具体方法实现
-- [x] 网络通信模块封装
-- [x] 客户端GUI
+修改为 TCPListener + TCPClient方式 多线程建立连接
 
 ## 使用帮助
 
